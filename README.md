@@ -1,12 +1,44 @@
-# React + Vite
+# 💄 EcoTrend – Beleza Sustentável  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+O **EcoTrend** é um e-commerce de **cosméticos e acessórios de beleza sustentáveis**, desenvolvido em **React** para prática de front-end moderno com foco em experiência do usuário e consumo consciente.  
+A proposta é unir **autocuidado + sustentabilidade**, oferecendo maquiagens, skincare e acessórios ecológicos.  
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🎯 Objetivo do Projeto  
 
-## Expanding the ESLint configuration
+Criar uma loja virtual funcional que:  
+- Exiba produtos de beleza carregados via JSON  
+- Tenha **filtros por categoria e preço**  
+- Possua um **carrinho de compras dinâmico**  
+- Use **localStorage** para salvar o carrinho  
+- Simule um **checkout assíncrono** com feedback para o usuário  
+- Apresente um **loading spinner** durante requisições  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## ⚙️ Funcionalidades  
+
+- ✅ **Catálogo de Produtos de Beleza**: bases, batons, balms, corretivos, iluminadores, máscaras de cílios e muito mais.  
+- ✅ **Filtros Inteligentes**: selecione por **categoria** ou **ordene por preço** sem recarregar a página.  
+- ✅ **Carrinho Flutuante**: carrinho sempre visível no canto superior direito, fácil de abrir e fechar.  
+- ✅ **Finalização de Compra**: simulação de compra finalizada com feedback ao usuário.  
+- ✅ **Persistência**: itens do carrinho permanecem salvos mesmo após fechar a página.  
+
+---
+
+## 🛠️ Tecnologias  
+
+- ⚛️ **React**  
+- 📜 **JavaScript (ES6+)**  
+- 💅 **CSS responsivo**  
+- 💾 **localStorage**  
+- 🌐 **Fetch API + async/await**  
+
+---
+
+## 📦 Entregáveis  
+
+- 🌍 Página publicada (GitHub Pages ou Vercel)  
+- 📹 Vídeo de demonstração no LinkedIn  
+- 📄 README descrevendo a aplicação  
