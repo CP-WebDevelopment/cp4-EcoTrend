@@ -1,6 +1,6 @@
 # EcoTrend – Beleza Sustentável  
 
-O **EcoTrend** é um e-commerce de **cosméticos e acessórios de beleza sustentáveis**, desenvolvido em **React** para prática de front-end moderno com foco em experiência do usuário e consumo consciente.  
+O **EcoTrend** é um e-commerce de **cosméticos e acessórios de beleza sustentáveis**, desenvolvido em **React** para prática de front-end e Web Development moderno com foco em experiência do usuário e consumo consciente.  
 A proposta é unir **autocuidado + sustentabilidade**, oferecendo maquiagens, skincare e acessórios ecológicos.  
 
 ---
