@@ -3,7 +3,7 @@
   --eco:#59b390;
 }
 
-/* ===== HEADER ===== */
+/*HEADER */
 .header{
   display:flex;
   align-items:center;
@@ -36,14 +36,14 @@
   font-size:12px; padding:4px 6px; border-radius:50%;
 }
 
-/* ===== FILTROS ===== */
+/*FILTROS  */
 .filtros{ display:flex; gap:12px; margin:16px 0; }
 .filtros label{ font-weight:bold; color:var(--eco); }
 .filtros select{
   padding:6px 10px; border:1px solid #ccc; border-radius:6px;
 }
 
-/* ===== BOTÕES ===== */
+/* BOTÕES */
 .btn{
   cursor:pointer; border:none; border-radius:8px;
   padding:10px 14px; font-weight:bold; min-height:44px;
@@ -72,7 +72,7 @@
 }
 .btn-finalizar:hover{ filter:brightness(1.05); }
 
-/* ===== CARRINHO ===== */
+/*  CARRINHO */
 .carrinho{
   position:fixed;
   top:16px; right:-400px;
@@ -107,7 +107,7 @@
   display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;
 }
 
-/* ===== LINHA DO ITEM ===== */
+/* LINHA DO ITEM */
 .linha-carrinho{
   display:grid;
   grid-template-columns:60px 1fr;
@@ -159,9 +159,9 @@
 }
 
 .logo .eco {
-  color: #59b390; /* verde */
+  color: #59b390; 
 }
 
 .logo .trend {
-  color: #ff6f91; /* rosa goiaba */
+  color: #ff6f91; 
 }
