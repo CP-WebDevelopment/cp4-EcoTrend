@@ -39,19 +39,17 @@ export default function App() {
   const abrirCarrinho = () => setCarrinhoAberto(true);
   const fecharCarrinho = () => setCarrinhoAberto(false);
 
+  // Carregar catálogo
   useEffect(() => {
     fetch('/produtos.json')
-      .then((r) => {
-        if (!r.ok) throw new Error('sem local');
-        return r.json();
-      })
+      .then(r => r.ok ? r.json() : Promise.reject('sem local'))
       .then(normalizar)
       .catch(() => {
         const urlRemota = 'https://raw.githubusercontent.com/CP-WebDevelopment/produtosEcoTrend/main/produtos.json';
         fetch(urlRemota)
-          .then((r) => r.json())
+          .then(r => r.json())
           .then(normalizar)
-          .catch((e) => console.error('Falha ao carregar produtos:', e));
+          .catch(e => console.error('Falha ao carregar produtos:', e));
       });
   }, []);
 
@@ -65,50 +63,73 @@ export default function App() {
     setProdutosCatalogo(lista);
   }
 
+  // **Carregar carrinho do localStorage**
+  useEffect(() => {
+    const carrinhoLS = JSON.parse(localStorage.getItem('carrinho')) || [];
+    setCarrinho(carrinhoLS);
+  }, []);
+
+  // **Função para adicionar ao carrinho**
+  const adicionarAoCarrinho = (produto) => {
+    setCarrinho(prev => {
+      const existe = prev.find(p => p.id === produto.id);
+      let novoCarrinho;
+      if (existe) {
+        novoCarrinho = prev.map(p => p.id === produto.id ? { ...p, qtd: (p.qtd || 1) + 1 } : p);
+      } else {
+        novoCarrinho = [...prev, { ...produto, qtd: 1 }];
+      }
+      localStorage.setItem('carrinho', JSON.stringify(novoCarrinho));
+      return novoCarrinho;
+    });
+  };
+
+  // **Função para remover do carrinho**
+  const removerDoCarrinho = (id) => {
+    setCarrinho(prev => {
+      const item = prev.find(p => p.id === id);
+      if (!item) return prev;
+      let novoCarrinho;
+      if (item.qtd > 1) {
+        novoCarrinho = prev.map(p => p.id === id ? { ...p, qtd: p.qtd - 1 } : p);
+      } else {
+        novoCarrinho = prev.filter(p => p.id !== id);
+      }
+      localStorage.setItem('carrinho', JSON.stringify(novoCarrinho));
+      return novoCarrinho;
+    });
+  };
+
+  // **Função para limpar o carrinho**
+  const limparCarrinho = () => {
+    setCarrinho([]);
+    localStorage.removeItem('carrinho');
+  };
+
+  const total = useMemo(() =>
+    carrinho.reduce((acc, i) => acc + (i.precoNumber || parseValor(i.valor || i.preco)) * (i.qtd || 1), 0),
+    [carrinho]
+  );
+
   const categorias = useMemo(() => {
-    const s = new Set(produtosCatalogo.map((p) => p.categoria).filter(Boolean));
+    const s = new Set(produtosCatalogo.map(p => p.categoria).filter(Boolean));
     return ['Todos', ...Array.from(s)];
   }, [produtosCatalogo]);
 
   const produtosFiltrados = useMemo(() => {
     let lista = [...produtosCatalogo];
-    if (categoriaSelecionada !== 'Todos') {
-      lista = lista.filter((p) => p.categoria === categoriaSelecionada);
-    }
-    if (ordemPreco === 'asc') lista.sort((a, b) => a.precoNumber - b.precoNumber);
-    if (ordemPreco === 'desc') lista.sort((a, b) => b.precoNumber - a.precoNumber);
+    if (categoriaSelecionada !== 'Todos') lista = lista.filter(p => p.categoria === categoriaSelecionada);
+    if (ordemPreco === 'asc') lista.sort((a,b) => a.precoNumber - b.precoNumber);
+    if (ordemPreco === 'desc') lista.sort((a,b) => b.precoNumber - a.precoNumber);
     return lista;
   }, [produtosCatalogo, categoriaSelecionada, ordemPreco]);
 
-  const adicionarAoCarrinho = (produto) => {
-    setCarrinho((ant) => {
-      const existe = ant.find((i) => i.id === produto.id);
-      if (existe) return ant.map((i) => (i.id === produto.id ? { ...i, qtd: i.qtd + 1 } : i));
-      return [...ant, { ...produto, qtd: 1 }];
-    });
-  };
-  const removerDoCarrinho = (id) => {
-    setCarrinho((ant) => {
-      const item = ant.find((i) => i.id === id);
-      if (!item) return ant;
-      if (item.qtd > 1) return ant.map((i) => (i.id === id ? { ...i, qtd: i.qtd - 1 } : i));
-      return ant.filter((i) => i.id !== id);
-    });
-  };
-  const limparCarrinho = () => setCarrinho([]);
-
-  const total = useMemo(
-    () =>
-      carrinho.reduce(
-        (acc, i) => acc + (i.precoNumber || parseValor(i.valor || i.preco)) * i.qtd,
-        0
-      ),
-    [carrinho]
-  );
-
   return (
     <>
-      <Header abrirCarrinho={abrirCarrinho} itensCarrinho={carrinho.reduce((a, i) => a + i.qtd, 0)} />
+      <Header 
+        abrirCarrinho={abrirCarrinho} 
+        itensCarrinho={carrinho.reduce((a,i) => a + (i.qtd || 1), 0)} 
+      />
       <main className="container">
         <Produtos
           produtos={produtosFiltrados}
@@ -126,11 +147,7 @@ export default function App() {
         itens={carrinho}
         total={total}
         onRemover={removerDoCarrinho}
-        onFinalizar={() => {
-          alert('Compra finalizada! 🎉');
-          limparCarrinho();
-          fecharCarrinho();
-        }}
+        onFinalizar={() => { alert('Compra finalizada! 🎉'); limparCarrinho(); fecharCarrinho(); }}
       />
       <Footer />
     </>

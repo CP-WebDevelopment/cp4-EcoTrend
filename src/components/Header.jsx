@@ -1,5 +1,6 @@
 import React from 'react';
-import carrinhoBranco from '../assets/carrinho-branco.svg';
+import "../css/header.css";
+import carrinhoBranco from '../assets/carrinho.png';
 
 export default function Header({ abrirCarrinho, itensCarrinho = 0 }) {
   return (

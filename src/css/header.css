@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
-  background-color: var(--rosa-principal);
+  background-color: #ffff;
   font-family: 'Poppins', sans-serif; /* você pode escolher qualquer fonte da importação */
   color: var(--branco);
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -15,25 +15,24 @@
   margin: 0;
 }
 
-.botao-carrinho {
-  position: relative; /* necessário para posicionar a badge */
+.btn-carrinho {
+  position: relative;
   background: none;
   border: none;
   cursor: pointer;
   transition: transform 0.2s;
 }
 
-.botao-carrinho:hover {
+.btn-carrinho:hover {
   transform: scale(1.1);
 }
 
-.botao-carrinho img {
+.icone-carrinho {
   width: 35px;
   height: 35px;
 }
 
-/* NOVO: badge de quantidade */
-.badge {
+.badge-carrinho {
   position: absolute;
   top: -8px;
   right: -8px;
