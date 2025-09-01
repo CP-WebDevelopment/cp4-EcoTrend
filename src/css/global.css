@@ -3,6 +3,12 @@ html,body,#root{ height:100%; }
 body{
   margin:0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-  background:#fff6f4; /* fundo rosado suave */
+  background:#fff6f4; 
   color:#111;
+}
+
+@media (max-width: 1024px) {
+  body {
+    font-size: 14px;
+  }
 }

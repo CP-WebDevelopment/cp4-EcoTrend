@@ -34,3 +34,30 @@
   display: flex;
   justify-content: space-between;
 }
+
+@media (max-width: 1024px) {
+  .carrinho-sidebar {
+    width: 90%;
+    right: 5%;
+    padding: 15px;
+  }
+
+  .carrinho-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .carrinho-lista li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .carrinho-lista li span,
+  .carrinho-lista li button {
+    font-size: 0.9rem;
+  }
+
+  .carrinho-lista li button {
+    margin-top: 5px;
+    width: 100%;
+  }
+}

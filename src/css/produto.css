@@ -79,3 +79,35 @@
 .card-produto .btn{
   margin-top:8px;
 }
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 12px;
+  }
+
+  .grid-produtos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .card-produto {
+    padding: 10px;
+  }
+
+  .nome-produto {
+    font-size: 14px;
+  }
+
+  .desc-produto {
+    font-size: 13px;
+    min-height: 50px;
+  }
+
+  .preco {
+    font-size: 14px;
+  }
+
+  .btn {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}

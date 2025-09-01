@@ -4,3 +4,10 @@ footer.footer {
   background-color: #f5f5f5;
   font-family: 'Poppins', sans-serif;
 }
+
+@media (max-width: 1024px) {
+  footer.footer {
+    padding: 12px;
+    font-size: 14px;
+  }
+}

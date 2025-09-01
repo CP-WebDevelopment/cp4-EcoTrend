@@ -3,15 +3,7 @@
   --eco:#59b390;
 }
 
-/*HEADER */
-.header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:16px;
-  background:#fff;
-  border-bottom:1px solid #ddd;
-}
+
 .brand{ display:inline-flex; align-items:center; text-decoration:none; }
 .logo-img{ height:44px; width:auto; }
 
@@ -164,4 +156,54 @@
 
 .logo .trend {
   color: #ff6f91; 
+}
+
+@media (max-width: 1024px) {
+    .btn-carrinho {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .filtros {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .filtros select {
+    width: 100%;
+  }
+
+  .grid-produtos {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+  }
+
+  .carrinho {
+    width: 90%;
+    right: 5%;
+    padding: 12px;
+  }
+
+  .linha-carrinho {
+    grid-template-columns: 50px 1fr;
+    gap: 8px;
+  }
+
+  .thumb-carrinho {
+    width: 50px;
+    height: 50px;
+  }
+
+  .titulo-cart {
+    font-size: 14px;
+  }
+
+  .preco-linha, .qtd, .chip-unit {
+    font-size: 12px;
+  }
+
+  .btn, .btn-add, .btn-finalizar {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
 }
