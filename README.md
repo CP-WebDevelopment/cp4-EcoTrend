@@ -1,5 +1,10 @@
 # EcoTrend – Beleza Sustentável  
 
+### Trabalho acadêmico FIAP
+- Giovana Bernardino Carnevali (RM 566196)
+- Anna Clara Ruggeri (RM 565553)
+---
+
 O **EcoTrend** é um e-commerce de **cosméticos e acessórios de beleza sustentáveis**, desenvolvido em **React** para prática de front-end e Web Development moderno com foco em experiência do usuário e consumo consciente.  
 A proposta é unir **autocuidado + sustentabilidade**, oferecendo maquiagens, skincare e acessórios ecológicos.  
 
@@ -34,3 +39,5 @@ Criar uma loja virtual funcional que:
 - **CSS responsivo**  
 - **localStorage**  
 - **Fetch API + async/await**  
+---
+#### OBS: Imagens dos produtos da AmoKarité
