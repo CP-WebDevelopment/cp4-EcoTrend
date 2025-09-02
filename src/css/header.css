@@ -10,14 +10,32 @@
   background-color: #afd2a9; /* verde do topo */
   font-family: 'Poppins', sans-serif;
   color: #fff;               /* cor padrão do texto no header */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* fix do typo */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
+/* Logo (texto + folha) */
 .header h1 {
   font-family: 'Montserrat Alternates', 'Poppins', sans-serif; /* nova fonte da logo */
   font-size: 2rem;
   margin: 0;
   color: #ff6f91; /* cor da logo (goiaba) */
+}
+
+.logo{
+  display: inline-flex;
+  align-items: center;
+  gap: 2px; /* espaço entre “EcoTrend” e a folha */
+}
+
+/* Folha ao lado da palavra EcoTrend */
+.logo-leaf{
+  height: 1.1em;   /* acompanha o tamanho da fonte da logo */
+  width: auto;
+  display: inline-block;
+  margin-left: 1px;
+  object-fit: contain;
+  /* Se quiser a folha branca no topo, descomente: */
+  /* filter: brightness(0) invert(1); */
 }
 
 /* botão do carrinho colado à direita */
@@ -58,14 +76,7 @@
   margin-left: auto; /* joga para o canto direito */
 }
 
-/* Linha com os ícones (não clicáveis) */
-.header-icones {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-/* ícones “estáticos” (perfil, lupa etc.) */
+/* Ícones “estáticos” (perfil, lupa) */
 .icone-header {
   width: 30px;
   height: 30px;
@@ -99,8 +110,7 @@
     padding: 1px 4px;
   }
 
-  .header-actions,
-  .header-icones {
+  .header-actions {
     gap: 12px;
   }
 
