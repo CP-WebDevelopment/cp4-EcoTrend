@@ -1,20 +1,23 @@
-/* HEADER — topo verde #59b390, logo à esquerda, carrinho à direita */
+/* importa a fonte só pra logo */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@800&display=swap');
+
+/* HEADER — topo verde, logo à esquerda, carrinho à direita */
 .header {
   display: flex;
   justify-content: space-between;  
   align-items: center;
   padding: 9px 35px;
-  background-color: #afd2a9;       /* verde do topo */
+  background-color: #afd2a9; /* verde do topo */
   font-family: 'Poppins', sans-serif;
-  color: #fff;                      /* cor padrão do texto no header */
-  box-shadow: 0 2px px rgba(0,0,0,0.1);
+  color: #fff;               /* cor padrão do texto no header */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* fix do typo */
 }
 
 .header h1 {
-  font-family: 'Patua One', cursive;
+  font-family: 'Montserrat Alternates', 'Poppins', sans-serif; /* nova fonte da logo */
   font-size: 2rem;
   margin: 0;
-  color: #ff6f91;                   /* ← NOVA COR da logo (goiaba) */
+  color: #ff6f91; /* cor da logo (goiaba) */
 }
 
 /* botão do carrinho colado à direita */
@@ -47,6 +50,31 @@
   font-size: 12px;
 }
 
+/* Agrupa os ícones e o carrinho à direita */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto; /* joga para o canto direito */
+}
+
+/* Linha com os ícones (não clicáveis) */
+.header-icones {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* ícones “estáticos” (perfil, lupa etc.) */
+.icone-header {
+  width: 30px;
+  height: 30px;
+  display: block;
+  pointer-events: none; 
+  user-select: none;
+  cursor: default;
+}
+
 /* MOBILE: mantém tudo em linha (logo esquerda | carrinho direita) */
 @media (max-width: 1024px) {
   .header {
@@ -70,38 +98,12 @@
     font-size: 10px;
     padding: 1px 4px;
   }
-}
-/* Agrupa os ícones e o carrinho à direita */
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-left: auto; /* joga para o canto direito */
-}
 
-/* Linha com os 3 ícones (não clicáveis) */
-.header-icones {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-
-.icone-header {
-  width: 30px;
-  height: 30px;
-  display: block;
-  pointer-events: none; 
-  user-select: none;
-  cursor: default;
-}
-
-/* Responsivo */
-@media (max-width: 1024px) {
   .header-actions,
   .header-icones {
     gap: 12px;
   }
+
   .icone-header {
     width: 24px;
     height: 24px;
