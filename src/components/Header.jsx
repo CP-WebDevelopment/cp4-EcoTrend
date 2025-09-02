@@ -1,17 +1,19 @@
 import React from 'react';
 import "../css/header.css";
 
-import carrinhoBranco from '../assets/carrinho.png'; // carrinho (como antes)
-import perfilIcon     from '../assets/perfil.png';   // perfil (não clicável)
-import lupaIcon       from '../assets/lupa.png';     // lupa (não clicável)
+import carrinhoBranco from '../assets/carrinho.png';
+import perfilIcon     from '../assets/perfil.png';
+import lupaIcon       from '../assets/lupa.png';
+import folhaIcon      from '../assets/folha.png'; // <- nova imagem da folha
 
 export default function Header({ abrirCarrinho, itensCarrinho = 0 }) {
   return (
     <header className="header">
-      {/* Logo escrita */}
+      {/* Logo escrita + folha */}
       <h1 className="logo">
         <span className="eco">Eco</span>
         <span className="trend">Trend</span>
+        <img src={folhaIcon} alt="" className="logo-leaf" aria-hidden="true" />
       </h1>
 
       {/* Perfil + Lupa (imagens) e Carrinho (botão) */}
