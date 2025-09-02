@@ -40,4 +40,9 @@ Criar uma loja virtual funcional que:
 - **localStorage**  
 - **Fetch API + async/await**  
 ---
+
+## Link Vercel
+https://ecotrend-ten.vercel.app/
+
+---
 #### OBS: Imagens dos produtos da AmoKarité
