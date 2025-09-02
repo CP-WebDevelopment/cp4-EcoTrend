@@ -9,6 +9,9 @@ export default function Carrinho({
   onRemover,    // remover um item
   onFinalizar,  // finalizar a compra
 }) {
+  // Se não estiver aberto, não renderiza nada.
+  // Isso elimina qualquer "filete" aparecendo em telas menores.
+  if (!aberto) return null;
 
   // Formata valores em reais (R$ 10,50)
   const fmt = (v) =>
@@ -26,50 +29,51 @@ export default function Carrinho({
   };
 
   return (
-    <aside className={`carrinho ${aberto ? "aberto" : ""}`}>
-      
+    <aside className="carrinho aberto" role="dialog" aria-label="Seu carrinho" aria-modal="true">
       <div className="carrinho-header">
         <h2>Seu carrinho</h2>
-        <button className="btn-fechar" onClick={fechar} aria-label="Fechar">×</button>
+        <button className="btn-fechar" onClick={fechar} aria-label="Fechar">
+          ×
+        </button>
       </div>
 
       {/* Lista de produtos */}
       <div className="carrinho-itens">
-        {/* Mensagem caso o carrinho vazio */}
-        {itens.length === 0 && <p>Sem itens por aqui ainda 🙂</p>}
+        {/* Mensagem caso o carrinho esteja vazio */}
+        {(!itens || itens.length === 0) && <p>Sem itens por aqui ainda 🙂</p>}
 
-        {itens.map((item) => {
-          const nome = item.produto || item.nome; // pega nome do produto
-          const subtotal = (item.precoNumber || 0) * (item.qtd || 1); // calcula subtotal
-          const subtotalTxt = `R$ ${Number(subtotal).toFixed(2).replace(".", ",")}`; // formata subtotal
-          const unitTxt = `R$ ${Number(item.precoNumber || 0).toFixed(2).replace(".", ",")}`; // formata preço unitário
+        {itens?.map((item) => {
+          const nome = item.produto || item.nome;
+          const subtotal = (item.precoNumber || 0) * (item.qtd || 1);
+          const subtotalTxt = `R$ ${Number(subtotal).toFixed(2).replace(".", ",")}`;
+          const unitTxt = `R$ ${Number(item.precoNumber || 0).toFixed(2).replace(".", ",")}`;
 
           return (
-            <div key={item.id ?? nome} className="linha-carrinho">
-
-              {/* Imagem do produto */}
+            <div key={item.id ?? `${nome}-${unitTxt}`} className="linha-carrinho">
+              {/* Imagem */}
               <img
                 src={item.imagem}
                 alt={nome}
                 className="thumb-carrinho"
-                onError={onImgError} // fallback caso imagem falhe
+                onError={onImgError}
               />
 
-              {/* Informações do produto */}
+              {/* Info */}
               <div className="info-cart">
-
                 {/* Nome e subtotal */}
                 <div className="row-1">
-                  <strong className="titulo-cart" title={nome}>{nome}</strong>
+                  <strong className="titulo-cart" title={nome}>
+                    {nome}
+                  </strong>
                   <div className="preco-linha">{subtotalTxt}</div>
                 </div>
 
-                {/* Quantidade e botão de remover */}
+                {/* Quantidade e remover */}
                 <div className="row-2">
                   <span className="qtd">Qtd: {item.qtd}</span>
                   <button
                     className="btn-remove cart-remove"
-                    onClick={() => onRemover(item.id)} // chama função de remover
+                    onClick={() => onRemover(item.id)}
                   >
                     Remover
                   </button>
@@ -83,7 +87,7 @@ export default function Carrinho({
         })}
       </div>
 
-      {/* Rodapé com total e finalizar compra */}
+      {/* Rodapé */}
       <div className="carrinho-footer">
         <div className="total">
           <span>Total</span>

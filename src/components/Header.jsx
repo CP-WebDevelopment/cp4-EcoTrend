@@ -1,6 +1,9 @@
 import React from 'react';
 import "../css/header.css";
-import carrinhoBranco from '../assets/carrinho.png';
+
+import carrinhoBranco from '../assets/carrinho.png'; // carrinho (como antes)
+import perfilIcon     from '../assets/perfil.png';   // perfil (não clicável)
+import lupaIcon       from '../assets/lupa.png';     // lupa (não clicável)
 
 export default function Header({ abrirCarrinho, itensCarrinho = 0 }) {
   return (
@@ -11,11 +14,17 @@ export default function Header({ abrirCarrinho, itensCarrinho = 0 }) {
         <span className="trend">Trend</span>
       </h1>
 
-      {/* Botão do carrinho */}
-      <button className="btn-carrinho" onClick={abrirCarrinho} aria-label="Abrir carrinho">
-        <img src={carrinhoBranco} alt="Carrinho" className="icone-carrinho" />
-        {itensCarrinho > 0 && <span className="badge-carrinho">{itensCarrinho}</span>}
-      </button>
+      {/* Perfil + Lupa (imagens) e Carrinho (botão) */}
+      <div className="header-actions">
+        <img src={perfilIcon} alt="Perfil" className="icone-header" />
+        <img src={lupaIcon}   alt="Buscar" className="icone-header" />
+
+        {/* Carrinho — inalterado */}
+        <button className="btn-carrinho" onClick={abrirCarrinho} aria-label="Abrir carrinho">
+          <img src={carrinhoBranco} alt="Carrinho" className="icone-carrinho" />
+          {itensCarrinho > 0 && <span className="badge-carrinho">{itensCarrinho}</span>}
+        </button>
+      </div>
     </header>
   );
 }

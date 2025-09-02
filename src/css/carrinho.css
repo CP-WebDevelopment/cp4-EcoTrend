@@ -61,3 +61,51 @@
     width: 100%;
   }
 }
+/* ======= PATCH DEFINITIVO: carrinho 100% escondido quando fechado ======= */
+/* ancora SEMPRE no lado direito da janela */
+.carrinho{
+  position: fixed !important;
+  top: 0 !important;
+  right: 0 !important;
+  left: auto !important;
+  bottom: 0 !important;
+
+  width: clamp(300px, 92vw, 420px) !important;
+  height: 100vh !important;
+  overflow: auto;
+
+  /* visual que você já tinha */
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px 0 0 12px;
+  box-shadow: 0 16px 40px rgba(0,0,0,.12);
+  z-index: 9999;
+
+  /* === ESTADO FECHADO === */
+  transform: translateX(110%) !important;  /* joga totalmente fora da tela */
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+
+  transition: transform .30s ease, opacity .20s ease;
+  will-change: transform, opacity;
+}
+
+/* === ESTADO ABERTO === */
+.carrinho.aberto{
+  transform: translateX(0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+/* breakpoints (não mudam a mecânica de abrir/fechar) */
+@media (max-width: 1024px){
+  .carrinho{ width: clamp(320px, 96vw, 400px) !important; }
+}
+@media (max-width: 480px){
+  .carrinho{
+    width: 100vw !important;
+    border-radius: 0 !important;   /* fullscreen no celular */
+  }
+}

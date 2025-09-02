@@ -14,29 +14,46 @@ export default function Produtos({
     <>
       {/* Filtros de categoria e preço */}
       <div className="filtros container">
-        <label>
-          Categoria:
-          <select
-            value={categoriaSelecionada} //selecionado no filtro
-            onChange={(e) => setCategoriaSelecionada(e.target.value)} // atualiza categoria
-          >
-            {categorias.map((c) => (
-              <option key={c} value={c}>{c}</option>
-            ))}
-          </select>
-        </label>
+        {/* WRAP interno: força alinhar à ESQUERDA sem mudar largura/espessura */}
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            gap: '8px 12px',
+            margin: '20px 0 24px',
+            textAlign: 'left',
+            // truques que colam à esquerda mesmo se o pai centraliza:
+            marginLeft: 0,
+            marginRight: 'auto',
+            alignSelf: 'flex-start',
+            justifyContent: 'flex-start',
+          }}
+        >
+          <label>
+            Categoria:
+            <select
+              value={categoriaSelecionada} //selecionado no filtro
+              onChange={(e) => setCategoriaSelecionada(e.target.value)} // atualiza categoria
+            >
+              {categorias.map((c) => (
+                <option key={c} value={c}>{c}</option>
+              ))}
+            </select>
+          </label>
 
-        <label>
-          Preço:
-          <select
-            value={ordemPreco} // valor selecionado para ordenação
-            onChange={(e) => setOrdemPreco(e.target.value)} // atualiza ordenação
-          >
-            <option value="nenhum">Sem ordenação</option>
-            <option value="asc">Menor valor</option>
-            <option value="desc">Maior valor</option>
-          </select>
-        </label>
+          <label>
+            Preço:
+            <select
+              value={ordemPreco} // valor selecionado para ordenação
+              onChange={(e) => setOrdemPreco(e.target.value)} // atualiza ordenação
+            >
+              <option value="nenhum">Sem ordenação</option>
+              <option value="asc">Menor valor</option>
+              <option value="desc">Maior valor</option>
+            </select>
+          </label>
+        </div>
       </div>
 
       {/* Lista de produtos em grade */}

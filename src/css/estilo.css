@@ -1,6 +1,6 @@
 :root {
   --goiaba: #ff6f91;
-  --eco: #59b390;
+  --eco: #ff6f91;
 }
 
 .brand {
@@ -281,11 +281,11 @@
 }
 
 .logo .eco {
-  color: #59b390;
+  color: #ffffff;
 }
 
 .logo .trend {
-  color: #ff6f91;
+  color: #ff6f91; 
 }
 
 @media (max-width: 1024px) {
@@ -340,4 +340,69 @@
     padding: 8px 10px;
     font-size: 14px;
   }
+}
+/* === PATCH: Filtros à esquerda, sem alterar largura/espessura === */
+.filtros{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start !important; /* nada de centro */
+  gap: 8px 12px;
+  margin-top: 20px;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.filtros label{
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+/* remove largura/altura forçada e volta ao padrão do navegador */
+.filtros select{
+  width: initial !important;
+  min-width: initial !important;
+  max-width: initial !important;
+  height: auto !important;
+  line-height: normal !important;
+  padding: 6px 10px !important;  /* conforto sem engrossar */
+  box-sizing: border-box;
+}
+/* ==== Filtros SEMPRE à esquerda (sem mudar tamanho) ==== */
+.filtros{
+  /* ocupa a linha toda pra poder alinhar à esquerda */
+  width: 100% !important;
+
+  /* layout dos filtros */
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: flex-start !important; /* esquerda */
+  gap: 8px 12px !important;
+
+  /* posicionamento no pai (grid/flex/center/etc.) */
+  margin: 20px 0 24px !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  text-align: left !important;
+  align-self: flex-start !important;  /* se o pai for flex */
+  justify-self: start !important;     /* se o pai for grid */
+  place-self: start !important;       /* fallback grid */
+}
+
+/* labels ok, sem quebrar */
+.filtros label{
+  white-space: nowrap !important;
+  font-weight: 600;
+}
+
+/* mantém tamanho original dos selects (sem engrossar) */
+.filtros select{
+  width: auto !important;
+  min-width: unset !important;
+  max-width: unset !important;
+  height: auto !important;
+  line-height: normal !important;
+  padding: 6px 10px !important;
+  box-sizing: border-box !important;
 }

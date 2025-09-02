@@ -54,9 +54,9 @@
 .tag{
   align-self:flex-start;
   font-size:12px;
-  color:#ff6f91;
-  background:#fff0f4;
-  border:1px solid #ffc8d6;
+  color:#92b58b;
+  background:#def3dc;
+  border:1px solid #aacca3;
   padding:2px 8px;
   border-radius:999px;
 }
@@ -109,5 +109,19 @@
   .btn {
     padding: 8px 12px;
     font-size: 14px;
+  }
+}
+/* --- RESPIRO NA BARRA DE FILTROS --- */
+/* espaço do header até os filtros e dos filtros até os cards */
+.filtros{
+  margin-top: 20px !important;     /* distância do topo */
+  margin-bottom: 24px !important;  /* distância dos cards */
+}
+
+/* opcional: no mobile um pouquinho menos pra caber tudo */
+@media (max-width: 1024px){
+  .filtros{
+    margin-top: 16px !important;
+    margin-bottom: 20px !important;
   }
 }

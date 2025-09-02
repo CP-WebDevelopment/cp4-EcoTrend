@@ -1,24 +1,26 @@
+/* HEADER — topo verde #59b390, logo à esquerda, carrinho à direita */
 .header {
   display: flex;
   justify-content: space-between;  
   align-items: center;
-  padding: 15px 30px;
-  background-color: #59b390;       
+  padding: 9px 35px;
+  background-color: #afd2a9;       /* verde do topo */
   font-family: 'Poppins', sans-serif;
-  color: var(--branco);
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  color: #fff;                      /* cor padrão do texto no header */
+  box-shadow: 0 2px px rgba(0,0,0,0.1);
 }
 
 .header h1 {
   font-family: 'Patua One', cursive;
   font-size: 2rem;
-  margin: 0;                       
+  margin: 0;
+  color: #ff6f91;                   /* ← NOVA COR da logo (goiaba) */
 }
 
-
+/* botão do carrinho colado à direita */
 .btn-carrinho {
   position: relative;
-  margin-left: auto;              
+  margin-left: auto;               
   background: none;
   border: none;
   cursor: pointer;
@@ -38,14 +40,14 @@
   position: absolute;
   top: -8px;
   right: -8px;
-  background-color: red;
+  background-color: #ff6f91; 
   color: white;
   border-radius: 50%;
-  padding: 2px 6px;
+  padding: 2px 7px;
   font-size: 12px;
 }
 
-
+/* MOBILE: mantém tudo em linha (logo esquerda | carrinho direita) */
 @media (max-width: 1024px) {
   .header {
     flex-direction: row;           
@@ -67,5 +69,41 @@
   .badge-carrinho {
     font-size: 10px;
     padding: 1px 4px;
+  }
+}
+/* Agrupa os ícones e o carrinho à direita */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto; /* joga para o canto direito */
+}
+
+/* Linha com os 3 ícones (não clicáveis) */
+.header-icones {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+
+.icone-header {
+  width: 30px;
+  height: 30px;
+  display: block;
+  pointer-events: none; 
+  user-select: none;
+  cursor: default;
+}
+
+/* Responsivo */
+@media (max-width: 1024px) {
+  .header-actions,
+  .header-icones {
+    gap: 12px;
+  }
+  .icone-header {
+    width: 24px;
+    height: 24px;
   }
 }
